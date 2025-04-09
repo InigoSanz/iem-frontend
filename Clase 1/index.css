@@ -1,0 +1,10 @@
+h1 {
+  color: darkgreen;
+}
+
+button {
+  background-color: lightblue;
+  border: 3px solid green;
+  padding: 8px;
+  border-radius: 10px;
+}
