@@ -1,9 +1,27 @@
-.box {
-  height: 100px;
-  width: 100px;
+.flex-box {
+  height: 400px;
+  width: 400px;
 
   padding: 20px;
 
   border: 1px solid black;
   margin: 20px;
+
+  background-color: aquamarine;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+.flex-box > div {
+  min-width: 100px;
+  min-height: 100px;
+
+  height: 100px;
+  width: 100px;
+
+  margin: 10px;
+
+  background-color: blanchedalmond;
 }
