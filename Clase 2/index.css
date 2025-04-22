@@ -2,10 +2,18 @@ h1 {
   color: red;
 }
 
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 #container p {
-  color: #0000ff;
+  color: rgb(0, 255, 0);
 }
 
 #container > p {
-  color: rgb(0, 255, 0);
+  color: #0000ff;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: underline;
+  line-height: 1.5;
 }
