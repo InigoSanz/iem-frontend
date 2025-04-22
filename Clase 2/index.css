@@ -3,9 +3,9 @@ h1 {
 }
 
 #container p {
-  color: blue;
+  color: #0000ff;
 }
 
 #container > p {
-  color: green;
+  color: rgb(0, 255, 0);
 }
