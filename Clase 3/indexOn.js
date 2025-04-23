@@ -24,3 +24,7 @@ button.addEventListener("click", (event) => {
 
 // Si metemos todo el anterior codigo dentro, conseguimos que el codigo se ejecute solo cuando todo el HTML se haya cargado
 // document.addEventListener("DOMContentLoaded", () => {});
+
+setTimeout(() => {
+  console.log("Timer 1 completado");
+}, 2000); // Temporizador
