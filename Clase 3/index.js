@@ -43,3 +43,12 @@ const hasBike = false;
 console.log(hasCar && hasBike); // false
 console.log(hasCar || hasBike); // true
 console.log(!hasCar); // false
+
+// Condicionales típicos
+if (hasCar) {
+  console.log("Tienes un coche");
+} else {
+  console.log("No tienes un coche");
+}
+// else if se concatenan, igual
+// switch funciona igual que en Java
