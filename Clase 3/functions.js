@@ -85,3 +85,28 @@ for (let key in person) {
   console.log(key);
   console.log(person[key]);
 }
+
+// No se puede seguir el ritmo de copilot haha
+
+let people = [
+  { name: "Pepe", age: 30, isActive: true },
+  { name: "Juan", age: 31, isActive: false },
+];
+
+// map
+const names = people.map(function getName(person, i) {
+  return person.name;
+});
+console.log(names);
+
+// Hay más funciones, como .filter, que si no cumple la condicion que le indicamos no devuelve el elemento en cuestión
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const evenNumbers = numbers.filter((n, i) => {
+  return n % 2 === 0;
+});
+
+// Funcion .reduce
+const reduceSum = numbers.reduce((acc, n, i) => {
+  return acc + n;
+}, 0);
