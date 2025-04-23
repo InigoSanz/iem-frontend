@@ -47,3 +47,15 @@ const arrowAdd = (a, b) => {
 const arrowAddSum = arrowSum(a, b);
 
 console.log(arrowAddSum); // Así
+
+// ¿Ejemplo memoria funciones?
+function container() {
+  let z = 5;
+
+  return function increment() {
+    z++;
+    console.log(z);
+  };
+}
+const increment = container();
+increment(); // = 6, investigar lo de la memoria de las funciones, mirar los apuntes de clase
