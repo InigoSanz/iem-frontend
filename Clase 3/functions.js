@@ -59,3 +59,20 @@ function container() {
 }
 const increment = container();
 increment(); // = 6, investigar lo de la memoria de las funciones, mirar los apuntes de clase
+
+let array = [1, 2, 3, 4, 5]; // Los arrays son dinámicos, como los arraylist de Java, la diferencia es que aqui un array puede contener diferentes tipos de datos
+array.push(6); // Añade en ultima posicion
+array.pop(); // Elimina el ultimo
+array.shift(); // Elimina el primero
+array.unshift(); // Añade 0 al principio
+
+const person = {
+  name: "Iñigo",
+  age: 27,
+  isActive: true,
+}; // Objecto clave-valor
+
+// En los objetos se pueden leer, modificar y eliminar
+console.log(person.name);
+person.name = "Juan";
+delete person.isActive;
