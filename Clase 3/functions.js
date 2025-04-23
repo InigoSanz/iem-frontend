@@ -76,3 +76,12 @@ const person = {
 console.log(person.name);
 person.name = "Juan";
 delete person.isActive;
+
+for (let item of array) {
+  console.log(item);
+}
+
+for (let key in person) {
+  console.log(key);
+  console.log(person[key]);
+}
