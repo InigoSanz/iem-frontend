@@ -37,7 +37,7 @@ const numbers = [1, 2, 3, 4, 5];
 const evenNumbers = numbers.filter((num) => num % 2 === 0);
 
 // Clases
-class person {
+class Person {
   private _name: string; // Buenas prácticas serian los privados definirlos con una "_", convención de nombres
   private _age: number;
   private _isStudent: boolean;
@@ -50,3 +50,16 @@ class person {
     this._name = value;
   }
 }
+
+class Animal {
+  private _name: string;
+  private _age: number;
+}
+
+class Dog extends Animal {
+  // Funciona igual que Java
+}
+
+// Interfaces
+// La diferencia radica en que las interfaces te obligan a implementar en la clase los atributos, métodos o funciones de esta
+// Diferencia entre extends e implements, es que extends hereda estructura e implementacion, implements unicamente la implementacion y tenemos que poner nosotros la estructura
