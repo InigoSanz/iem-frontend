@@ -35,3 +35,18 @@ function add(a: number, b: number): number {
 const numbers = [1, 2, 3, 4, 5];
 
 const evenNumbers = numbers.filter((num) => num % 2 === 0);
+
+// Clases
+class person {
+  private _name: string; // Buenas prácticas serian los privados definirlos con una "_", convención de nombres
+  private _age: number;
+  private _isStudent: boolean;
+
+  get name(): string {
+    return this._name;
+  }
+
+  set name(value: string) {
+    this._name = value;
+  }
+}
