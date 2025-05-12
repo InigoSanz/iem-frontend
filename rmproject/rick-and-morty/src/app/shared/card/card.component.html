@@ -6,5 +6,7 @@
     {{ footerText }}
   </p>
 
-  <button>Add to favorites</button>
+  <button class="button" (click)="onFavoriteClick()">
+    @if (!isFavorite) { Add to Favorites } @else { Remove from Favorites }
+  </button>
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -7,13 +7,20 @@ import { Component, Input } from '@angular/core';
   styleUrl: './card.component.css',
 })
 export class CardComponent {
-
   @Input() headerTitle: string;
   @Input() footerText: string;
+  @Input() isFavorite: boolean;
+
+  @Output() favoriteClick: EventEmitter<void>;
 
   constructor() {
     this.headerTitle = '';
     this.footerText = '';
+    this.isFavorite = false;
+    this.favoriteClick = new EventEmitter();
   }
 
+  onFavoriteClick(): void {
+    this.favoriteClick.emit();
+  }
 }
