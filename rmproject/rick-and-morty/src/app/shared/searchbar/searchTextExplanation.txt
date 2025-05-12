@@ -1,0 +1,29 @@
+Complete Data Flow Explanation
+
+Let me explain the complete data flow with the fixed code:
+
+SearchbarComponent:
+
+User types in the search bar and clicks search or triggers the search event
+onSearch() method calls this.searchText.emit(this.searchValue)
+This emits the search text value up to the parent component
+
+
+AppComponent:
+
+Listens for the searchText event from SearchbarComponent via (searchText)="onSearchText($event)"
+When received, calls onSearchText(searchText) which sets this._filterService.searchText = searchText
+This triggers the setter in FilterService
+
+
+FilterService:
+
+The setter method takes the string value and calls this._searchText.next(value)
+This pushes the new value to all subscribers of the searchText$ observable
+
+
+CharactersComponent:
+
+Subscribes to this._filterService.searchText$ in its constructor
+When a new value is pushed through the Subject, the subscription callback executes
+console.log(value) is called with the search text

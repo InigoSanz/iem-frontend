@@ -1,0 +1,7 @@
+<div class="card-container">
+    <ng-container *ngFor="let character of filteredCharacters">
+        <app-card [headerTitle]="character.name" [footerText]="character.status">
+        </app-card>
+    </ng-container>
+</div>
+

@@ -1,0 +1,13 @@
+
+
+.card-display{
+    border: 2px solid #000;
+    border-radius: 10px;
+    border-color: skyblue;
+    color:yellowgreen;
+    padding: 10px;
+    margin: 10px;
+    width: 100px;
+    height: 100px;
+
+}

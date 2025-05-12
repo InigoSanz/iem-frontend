@@ -1,0 +1,5 @@
+
+<form class="search-container">
+    <input class="search-input" [(ngModel)]="searchValue" [ngModelOptions]="{standalone : true}" type="text" placeholder="Search..."  />
+    <button class="search-button" type="button" (click)="onSearch()">Search</button>
+</form>
