@@ -85,4 +85,13 @@ export class FilterService {
 
     this._favoriteCharactersIds.next(currentFavorites);
   }
+
+  getCharacterById(id: number): Character | null {
+    for (const character of this._characters) {
+      if (character.id === id) {
+        return character;
+      }
+    }
+    return null;
+  }
 }

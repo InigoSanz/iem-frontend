@@ -1,2 +1,4 @@
-<p>Details Works</p>
-<button (click)="printId()">Print Id</button>
+@if(character !== null) {
+<app-card [headerTitle]="character.name" [footerText]="character.status">
+</app-card>
+}
