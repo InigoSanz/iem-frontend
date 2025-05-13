@@ -12,12 +12,12 @@ export interface Character {
 })
 export class FilterService {
   private _characters: Character[];
-  private _favoriteCharacters: BehaviorSubject<number[]>;
+  private _favoriteCharactersIds: BehaviorSubject<number[]>;
   private _searchText: BehaviorSubject<string>;
 
   constructor() {
     this._searchText = new BehaviorSubject<string>('');
-    this._favoriteCharacters = new BehaviorSubject<number[]>([]);
+    this._favoriteCharactersIds = new BehaviorSubject<number[]>([]);
 
     this._characters = [
       { id: 1, name: 'Rick Sanchez', status: 'Alive' },
@@ -50,8 +50,8 @@ export class FilterService {
     this._searchText.next(value);
   }
 
-  get favoriteCharacters(): Observable<number[]> {
-    return this._favoriteCharacters;
+  get favoriteCharactersIds(): Observable<number[]> {
+    return this._favoriteCharactersIds;
   }
 
   get filteredCharacters(): Observable<Character[]> {
@@ -71,7 +71,7 @@ export class FilterService {
   }
 
   toggleFavorite(characterId: number): void {
-    const currentFavorites = this._favoriteCharacters.getValue();
+    const currentFavorites = this._favoriteCharactersIds.getValue();
 
     const index = currentFavorites.findIndex(
       (character: number) => character === characterId
@@ -83,6 +83,6 @@ export class FilterService {
       currentFavorites.splice(index, 1);
     }
 
-    this._favoriteCharacters.next(currentFavorites);
+    this._favoriteCharactersIds.next(currentFavorites);
   }
 }

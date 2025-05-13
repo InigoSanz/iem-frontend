@@ -15,11 +15,13 @@ import { Component } from '@angular/core';
 export class CharactersComponent {
   protected filteredCharacters: Character[] = [];
   protected favoriteCharacterIds: number[];
+  protected favoriteCharacters: Character[];
 
   constructor(private _filterService: FilterService) {
     // Initialize filtered characters with all characters
     this.filteredCharacters = [];
     this.favoriteCharacterIds = [];
+    this.favoriteCharacters = [];
 
     this._filterService.filteredCharacters.subscribe({
       next: (characters: Character[]) => {
@@ -27,7 +29,7 @@ export class CharactersComponent {
       },
     });
 
-    this._filterService.favoriteCharacters.subscribe({
+    this._filterService.favoriteCharactersIds.subscribe({
       next: (favoriteIds: number[]) => {
         this.favoriteCharacterIds = favoriteIds;
       },
