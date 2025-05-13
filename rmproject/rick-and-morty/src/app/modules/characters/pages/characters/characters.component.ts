@@ -1,28 +1,24 @@
-import { CardComponent } from '../../shared/card/card.component';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CardComponent } from '../../../../shared/card/card.component';
 import {
   Character,
   FilterService,
-} from '../../core/services/filter/filter.service';
-import { Component } from '@angular/core';
+} from '../../../../core/services/filter/filter.service';
 
 @Component({
   selector: 'app-characters',
+  standalone: true,
   imports: [CardComponent, CommonModule],
   templateUrl: './characters.component.html',
-  styleUrl: './characters.component.css',
+  styleUrls: ['./characters.component.css'],
 })
 export class CharactersComponent {
   protected filteredCharacters: Character[] = [];
-  protected favoriteCharacterIds: number[];
-  protected favoriteCharacters: Character[];
+  protected favoriteCharacterIds: number[] = [];
+  protected favoriteCharacters: Character[] = [];
 
   constructor(private _filterService: FilterService) {
-    // Initialize filtered characters with all characters
-    this.filteredCharacters = [];
-    this.favoriteCharacterIds = [];
-    this.favoriteCharacters = [];
-
     this._filterService.filteredCharacters.subscribe({
       next: (characters: Character[]) => {
         this.filteredCharacters = characters;
@@ -35,6 +31,7 @@ export class CharactersComponent {
       },
     });
   }
+
   protected onFavoriteClick(character: Character): void {
     this._filterService.toggleFavorite(character.id);
   }
