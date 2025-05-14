@@ -13,7 +13,7 @@ import { FilterService } from "./core/services/filter/filter.service";
 export class AppComponent {
   title = "rick-and-morty";
 
-  constructor(private _filterService: FilterService) { }
+  constructor(private _filterService: FilterService) {}
 
   protected onSearchText(searchText: string) {
     this._filterService.searchText = searchText;

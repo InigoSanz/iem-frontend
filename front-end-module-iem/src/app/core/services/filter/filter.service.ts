@@ -11,15 +11,15 @@ export class FilterService {
   private _favoriteCharactersIds: BehaviorSubject<number[]>;
   private _characters: BehaviorSubject<Character[]>;
   private _searchText: BehaviorSubject<string>;
+  private _searchTextFavorites: BehaviorSubject<string>; // Creamos el Observable
 
   constructor(private _http: HttpClient) {
     this._favoriteCharactersIds = new BehaviorSubject<number[]>([]);
     this._characters = new BehaviorSubject<Character[]>([]);
 
     this._searchText = new BehaviorSubject<string>("");
+    this._searchTextFavorites = new BehaviorSubject<string>(""); // Lo instanciamos
   }
-
-  // Comentario prueba
 
   get favoriteCharactersIds(): Observable<number[]> {
     return this._favoriteCharactersIds;
@@ -31,6 +31,15 @@ export class FilterService {
 
   get searchText(): Observable<string> {
     return this._searchText;
+  }
+
+  // Añadimos sus getters y setters
+  set searchTextFavorites(value: string) {
+    this._searchTextFavorites.next(value);
+  }
+
+  get searchTextFavorites(): Observable<string> {
+    return this._searchTextFavorites;
   }
 
   get filteredCharacters(): Observable<Character[]> {
@@ -53,6 +62,41 @@ export class FilterService {
         return characters.filter((character) =>
           favoriteCharacterIds.includes(character.id)
         );
+      })
+    );
+  }
+
+  /**
+   * Antes solo teníamos el searchText, que se usa para el filtrado general de personajes.
+   * Añadimos también un filtro por nombre para los favoritos.
+   *
+   * Ahora hay que crear un Observable para los favoritos, vamos arriba.
+   *
+   * Creamos el método get que hará el filtrado de personajes favoritos.
+   *
+   * Este método hace lo siguiente:
+   * 1. Escucha los cambios en tres fuentes:
+   *    - Los IDs de personajes marcados como favoritos.
+   *    - El listado completo de personajes cargados desde la API.
+   *    - El texto de búsqueda introducido en la barra de favoritos.
+   *
+   * 2. Primero filtra los personajes que estén marcados como favoritos.
+   * 3. Luego aplica un segundo filtro según el texto de búsqueda.
+   *
+   * El resultado es una lista reactiva y filtrada de personajes favoritos.
+   */
+  get filteredFavoriteCharacters(): Observable<Character[]> {
+    return combineLatest([
+      this._favoriteCharactersIds,
+      this._characters,
+      this._searchTextFavorites,
+    ]).pipe(
+      map(([favoriteIds, characters, searchText]) => {
+        return characters
+          .filter((character) => favoriteIds.includes(character.id))
+          .filter((character) =>
+            character.name.toLowerCase().includes(searchText.toLowerCase())
+          );
       })
     );
   }
