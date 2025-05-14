@@ -1,0 +1,27 @@
+.form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.input {
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  height: 30px;
+  padding: 0 10px
+}
+
+.button {
+  border: 1px solid green;
+  border-radius: 8px;
+  cursor: pointer;
+  height: 31px;
+}
+
+.button:hover {
+  background-color: lightgreen;
+  color: green;
+  transition: all 0.3s ease;
+}

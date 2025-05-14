@@ -1,0 +1,8 @@
+<div class="card-container">
+  <ng-container *ngFor="let episode of episodes">
+    <app-card
+      [headerTitle]="episode.name"
+      [footerText]="episode.episode"
+    ></app-card>
+  </ng-container>
+</div>

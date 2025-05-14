@@ -1,0 +1,8 @@
+<div class="card-container">
+  <ng-container *ngFor="let location of locations">
+    <app-card
+      [headerTitle]="location.name"
+      [footerText]="location.dimension"
+    ></app-card>
+  </ng-container>
+</div>

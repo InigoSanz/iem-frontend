@@ -1,0 +1,24 @@
+<div class="card-container">
+  <ng-container *ngFor="let character of filteredCharacters">
+    <app-card
+      [headerTitle]="character.name"
+      [footerText]="character.status"
+      [isFavorite]="favoriteCharacterIds.includes(character.id)"
+      (favoriteClick)="onFavoriteClick(character)"
+    ></app-card>
+  </ng-container>
+</div>
+
+<h2>Favorite Characters</h2>
+
+<app-search-bar></app-search-bar>
+<div class="card-container">
+  <ng-container *ngFor="let character of favoriteCharacters">
+    <app-card
+      [headerTitle]="character.name"
+      [footerText]="character.status"
+      [isFavorite]="favoriteCharacterIds.includes(character.id)"
+      (favoriteClick)="onFavoriteClick(character)"
+    ></app-card>
+  </ng-container>
+</div>
