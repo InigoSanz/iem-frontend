@@ -26,6 +26,7 @@ export class CharacterDetailComponent implements OnInit {
     if (typeof parsedId === 'number') {
       this._filterService.getCharacterById(parsedId);
     } else {
+      console.error('Error');
     }
   }
 

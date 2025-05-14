@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, Subject } from 'rxjs';
 
@@ -15,7 +16,7 @@ export class FilterService {
   private _favoriteCharactersIds: BehaviorSubject<number[]>;
   private _searchText: BehaviorSubject<string>;
 
-  constructor() {
+  constructor(private _http: HttpClient) {
     this._searchText = new BehaviorSubject<string>('');
     this._favoriteCharactersIds = new BehaviorSubject<number[]>([]);
 
@@ -67,6 +68,12 @@ export class FilterService {
 
         return filteredCharacters;
       })
+    );
+  }
+
+  fetchCharacters(): Observable<Character[]> {
+    return this._http.get<Character[]>(
+      'https://rickandmortyapi.com/api/character'
     );
   }
 

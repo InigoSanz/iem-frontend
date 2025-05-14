@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { OnInit } from '@angular/core';
 import { CardComponent } from '../../../../shared/card/card.component';
 import {
   Character,
@@ -13,10 +14,17 @@ import {
   templateUrl: './characters.component.html',
   styleUrls: ['./characters.component.css'],
 })
-export class CharactersComponent {
+export class CharactersComponent /*implements OnInit */ {
   protected filteredCharacters: Character[] = [];
   protected favoriteCharacterIds: number[] = [];
   protected favoriteCharacters: Character[] = [];
+
+  //ngOnInit(): void {}
+  /*this._filterService.fetchCharacters().subscribe({
+    next: (characters: Character[]) => {
+      console.log("Character");
+    })
+  });*/
 
   constructor(private _filterService: FilterService) {
     this._filterService.filteredCharacters.subscribe({
