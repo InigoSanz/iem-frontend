@@ -19,6 +19,8 @@ export class FilterService {
     this._searchText = new BehaviorSubject<string>("");
   }
 
+  // Comentario prueba
+
   get favoriteCharactersIds(): Observable<number[]> {
     return this._favoriteCharactersIds;
   }
