@@ -1,0 +1,104 @@
+<form [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
+  <label for="name">Name:</label>
+  <input type="text" id="name" formControlName="name" />
+  <ng-container
+    *ngIf="
+      form.controls.name.touched &&
+      form.controls.name.errors &&
+      form.controls.name.errors['required']
+    "
+  >
+    <p>Name is required</p>
+  </ng-container>
+
+  <label for="status">Status:</label>
+  <select id="status" formControlName="status">
+    <option value="alive">Alive</option>
+    <option value="dead">Dead</option>
+    <option value="unknown">Unknown</option>
+  </select>
+
+  <label for="species">Species:</label>
+  <select id="species" formControlName="species">
+    <option value="human">Human</option>
+    <option value="alien">Alien</option>
+    <option value="robot">Robot</option>
+    <option value="mythical">Mythical</option>
+  </select>
+  <ng-container
+    *ngIf="
+      form.controls.species.touched &&
+      form.controls.species.errors &&
+      form.controls.species.errors['required']
+    "
+  >
+    <p>Species is required</p>
+  </ng-container>
+
+  <label for="gender"> Gender:</label>
+  <select id="gender" formControlName="gender">
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+    <option value="other">Other</option>
+    <option value="unknown">Unknown</option>
+  </select>
+  <ng-container
+    *ngIf="
+      form.controls.gender.touched &&
+      form.controls.gender.errors &&
+      form.controls.gender.errors['required']
+    "
+  >
+    <p>Gender is required</p>
+  </ng-container>
+
+  <label for="origin">Origin:</label>
+  <input type="text" id="origin" formControlName="origin" />
+  <ng-container
+    *ngIf="
+      form.controls.origin.touched &&
+      form.controls.origin.errors &&
+      form.controls.origin.errors['required']
+    "
+  >
+    <p>Origin is required</p>
+  </ng-container>
+
+  <label for="location">Location:</label>
+  <input type="text" id="location" formControlName="location" />
+  <ng-container
+    *ngIf="
+      form.controls.location.touched &&
+      form.controls.location.errors &&
+      form.controls.location.errors['required']
+    "
+  >
+    <p>Location is required</p>
+  </ng-container>
+
+  <label for="image">Image URL:</label>
+  <input type="text" id="image" formControlName="image" />
+  <ng-container
+    *ngIf="
+      form.controls.image.touched &&
+      form.controls.image.errors &&
+      form.controls.image.errors['required']
+    "
+  >
+    <p>Image URL is required</p>
+  </ng-container>
+
+  <label for="episode">Episode:</label>
+  <input type="text" id="episode " formControlName="episode" />
+  <ng-container
+    *ngIf="
+      form.controls.episode.touched &&
+      form.controls.episode.errors &&
+      form.controls.episode.errors['required']
+    "
+  >
+    <p>Episode is required</p>
+  </ng-container>
+
+  <button type="submit" [disabled]="!form.valid">Create</button>
+</form>

@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { CardComponent } from "../../../../shared/card/card.component";
-import { FilterService } from "../../../../core/services/filter/filter.service";
 import { Character } from "../../models/character.model";
 import { SearchBarComponent } from "../../../../shared/search-bar/search-bar.component";
+import { CharacterService } from "../../../../core/services/entity/character.service";
 
 @Component({
   selector: "app-characters",
@@ -12,48 +12,57 @@ import { SearchBarComponent } from "../../../../shared/search-bar/search-bar.com
   styleUrl: "./characters.component.css",
 })
 export class CharactersComponent implements OnInit {
-  protected filteredCharacters: Character[] = [];
-  protected favoriteCharacters: Character[] = [];
-  protected favoriteCharacterIds: number[] = [];
+  protected filteredCharacters: Character[];
+  protected favoriteCharacterIds: number[];
+  protected favoriteCharacters: Character[];
 
-  constructor(private _filterService: FilterService) {}
+  constructor(private _characterService: CharacterService) {
+    this.filteredCharacters = [];
+    this.favoriteCharacterIds = [];
+    this.favoriteCharacters = [];
+  }
 
   ngOnInit(): void {
-    this._filterService.loadCharacters();
+    this._characterService.entities.subscribe({
+      next: (characters: Character[]) => {
+        if (characters.length === 0) {
+          this._characterService.loadEntities();
+        }
+      },
+    });
 
-    this._filterService.filteredCharacters.subscribe({
+    this._characterService.filteredEntities.subscribe({
       next: (characters: Character[]) => {
         this.filteredCharacters = characters;
       },
     });
 
-    this._filterService.filteredFavoriteCharacters.subscribe({
-      next: (characters: Character[]) => {
-        this.favoriteCharacters = characters;
+    this._characterService.favoriteEntityIds.subscribe({
+      next: (favoriteIds: number[]) => {
+        this.favoriteCharacterIds = favoriteIds;
       },
     });
 
-    this._filterService.favoriteCharactersIds.subscribe({
-      next: (ids: number[]) => {
-        this.favoriteCharacterIds = ids;
+    const characters: Character[] = [];
+
+    this._characterService.favoriteEntityIds.subscribe({
+      next: (favouriteCharacterId: number[]) => {
+        for (const character of characters) {
+          if (favouriteCharacterId.includes(character.id)) {
+            this.favoriteCharacters.push(character);
+          }
+        }
+      },
+    });
+
+    this._characterService.favoriteEntities.subscribe({
+      next: (favoriteCharacters: Character[]) => {
+        this.favoriteCharacters = favoriteCharacters;
       },
     });
   }
 
   protected onFavoriteClick(character: Character): void {
-    this._filterService.toggleFavorite(character.id);
-  }
-
-  /**
-   * Se ejecuta cuando hacemos la búsqueda desde <app-search-bar>.
-   *
-   * Actualiza el BehaviorSubject searchTextFavorites del FilterService.
-   *
-   * Este BehaviorSubject es observado por el método filteredFavoriteCharacters para aplicar el filtro.
-   *
-   * @param searchText
-   */
-  protected onFavoriteSearch(searchText: string): void {
-    this._filterService.searchTextFavorites = searchText;
+    this._characterService.toggleFavorite(character.id);
   }
 }

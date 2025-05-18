@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
 import { HeaderComponent } from "./shared/header/header.component";
 import { SearchBarComponent } from "./shared/search-bar/search-bar.component";
-import { FilterService } from "./core/services/filter/filter.service";
+import { CharacterService } from "./core/services/entity/character.service";
 
 @Component({
   selector: "app-root",
@@ -13,9 +13,9 @@ import { FilterService } from "./core/services/filter/filter.service";
 export class AppComponent {
   title = "rick-and-morty";
 
-  constructor(private _filterService: FilterService) {}
+  constructor(private _characterService: CharacterService) { }
 
   protected onSearchText(searchText: string) {
-    this._filterService.searchText = searchText;
+    this._characterService.searchText = searchText;
   }
 }
