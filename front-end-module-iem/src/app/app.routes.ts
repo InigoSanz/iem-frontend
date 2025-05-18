@@ -46,7 +46,7 @@ export const routes: Routes = [
       {
         path: "",
         loadComponent: () =>
-          import("./modules/episodes/episodes.component").then(
+          import("./modules/episodes/pages/episodes/episodes.component").then(
             (m) => m.EpisodesComponent
           ),
       },

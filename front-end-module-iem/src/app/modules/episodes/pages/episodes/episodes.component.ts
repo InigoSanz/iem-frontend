@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { CardComponent } from "../../shared/card/card.component";
+
+import { CardComponent } from "../../../../shared/card/card.component";
 import { CommonModule } from "@angular/common";
 
 interface Episode {
@@ -79,7 +80,7 @@ export class EpisodesComponent implements OnInit {
     },
   ];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 }
