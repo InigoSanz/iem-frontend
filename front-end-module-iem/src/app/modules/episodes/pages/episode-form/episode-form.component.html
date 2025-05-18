@@ -1,1 +1,25 @@
-<p>episode-form works!</p>
+<form [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
+  <label for="name">Name:</label>
+  <input type="text" id="name" formControlName="name" />
+  <ng-container
+    *ngIf="
+      form.controls.name.touched &&
+      form.controls.name.errors &&
+      form.controls.name.errors['required']
+    "
+  >
+    <p>Name is required</p>
+  </ng-container>
+
+  <label for="air_date">Air Date:</label>
+  <input type="text" id="air_date" formControlName="air_date" />
+  <ng-container
+    *ngIf="
+      form.controls.air_date.touched &&
+      form.controls.air_date.errors &&
+      form.controls.air_date.errors['required']
+    "
+  >
+    <p>Air Date is required</p>
+  </ng-container>
+</form>
