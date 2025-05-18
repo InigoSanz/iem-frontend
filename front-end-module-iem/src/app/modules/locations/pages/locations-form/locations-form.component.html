@@ -1,1 +1,51 @@
-<p>locations-form works!</p>
+<form [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
+  <label for="name">Name:</label>
+  <input type="text" id="name" formControlName="name" />
+  <ng-container
+    *ngIf="
+      form.controls.name.touched &&
+      form.controls.name.errors &&
+      form.controls.name.errors['required']
+    "
+  >
+    <p>Name is required</p>
+  </ng-container>
+
+  <label for="type">Type:</label>
+  <input type="text" id="type" formControlName="type" />
+  <ng-container
+    *ngIf="
+      form.controls.type.touched &&
+      form.controls.type.errors &&
+      form.controls.type.errors['required']
+    "
+  >
+    <p>Type is required</p>
+  </ng-container>
+
+  <label for="dimension">Dimension:</label>
+  <input type="text" id="dimension" formControlName="dimension" />
+  <ng-container
+    *ngIf="
+      form.controls.dimension.touched &&
+      form.controls.dimension.errors &&
+      form.controls.dimension.errors['required']
+    "
+  >
+    <p>Dimension is required</p>
+  </ng-container>
+
+  <label for="residents">Residents:</label>
+  <input type="text" id="residents" formControlName="residents" />
+  <ng-container
+    *ngIf="
+      form.controls.residents.touched &&
+      form.controls.residents.errors &&
+      form.controls.residents.errors['required']
+    "
+  >
+    <p>Residents is required</p>
+  </ng-container>
+
+  <button type="submit" [disabled]="!form.valid">Create</button>
+</form>
