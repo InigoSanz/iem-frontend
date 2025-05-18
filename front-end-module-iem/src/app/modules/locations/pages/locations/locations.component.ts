@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
-import { CardComponent } from "../../shared/card/card.component";
+import { CardComponent } from "../../../../shared/card/card.component";
 
 interface Location {
   id: number;
@@ -49,5 +49,5 @@ export class LocationsComponent {
     },
   ];
 
-  constructor() { }
+  constructor() {}
 }
