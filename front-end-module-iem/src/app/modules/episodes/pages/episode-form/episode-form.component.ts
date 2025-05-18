@@ -46,9 +46,7 @@ export class EpisodeFormComponent {
       characters: new FormControl("", {
         validators: [Validators.required],
       }),
-      url: new FormControl("", {
-        validators: [Validators.required],
-      }),
+      url: new FormControl(""),
       created: new FormControl(""),
     });
   }

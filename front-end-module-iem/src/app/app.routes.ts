@@ -39,10 +39,17 @@ export const routes: Routes = [
   {
     path: "episodes",
     loadComponent: () =>
-      import("./modules/episodes/episodes.component").then(
-        (m) => m.EpisodesComponent
+      import("./modules/episodes/episodes-layout.component").then(
+        (m) => m.EpisodesLayoutComponent
       ),
     children: [
+      {
+        path: "",
+        loadComponent: () =>
+          import("./modules/episodes/episodes.component").then(
+            (m) => m.EpisodesComponent
+          ),
+      },
       {
         path: "new",
         loadComponent: () =>
