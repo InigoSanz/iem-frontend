@@ -10,7 +10,7 @@ export const routes: Routes = [
     path: "characters",
     loadComponent: () =>
       import("./modules/characters/characters-layout.component").then(
-        (m) => m.CharactersLayoutComponent,
+        (m) => m.CharactersLayoutComponent
       ),
     children: [
       {
@@ -40,14 +40,23 @@ export const routes: Routes = [
     path: "episodes",
     loadComponent: () =>
       import("./modules/episodes/episodes.component").then(
-        (m) => m.EpisodesComponent,
+        (m) => m.EpisodesComponent
       ),
+    children: [
+      {
+        path: "new",
+        loadComponent: () =>
+          import(
+            "./modules/episodes/pages/episode-form/episode-form.component"
+          ).then((m) => m.EpisodeFormComponent),
+      },
+    ],
   },
   {
     path: "locations",
     loadComponent: () =>
       import("./modules/locations/locations.component").then(
-        (m) => m.LocationsComponent,
+        (m) => m.LocationsComponent
       ),
   },
 ];
