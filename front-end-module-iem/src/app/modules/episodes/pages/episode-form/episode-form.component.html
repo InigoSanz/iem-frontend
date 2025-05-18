@@ -22,4 +22,28 @@
   >
     <p>Air Date is required</p>
   </ng-container>
+
+  <label for="episode">Episode:</label>
+  <input type="text" id="episode" formControlName="episode" />
+  <ng-container
+    *ngIf="
+      form.controls.episode.touched &&
+      form.controls.episode.errors &&
+      form.controls.episode.errors['required']
+    "
+  >
+    <p>Episode is required</p>
+  </ng-container>
+
+  <label for="characters">Character:</label>
+  <input type="text" id="characters" formControlName="characters" />
+  <ng-container
+    *ngIf="
+      form.controls.characters.touched &&
+      form.controls.characters.errors &&
+      form.controls.characters.errors['required']
+    "
+  >
+    <p>Character is required</p>
+  </ng-container>
 </form>
