@@ -62,8 +62,8 @@ export const routes: Routes = [
   {
     path: "locations",
     loadComponent: () =>
-      import("./modules/locations/pages/locations/locations.component").then(
-        (m) => m.LocationsComponent
+      import("./modules/locations/locations-layout.component").then(
+        (m) => m.LocationsLayoutComponent
       ),
     children: [
       {
