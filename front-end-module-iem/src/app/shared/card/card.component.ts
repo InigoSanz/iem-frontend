@@ -1,23 +1,24 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
-  selector: 'app-card',
+  selector: "app-card",
   imports: [],
-  templateUrl: './card.component.html',
-  styleUrl: './card.component.css',
+  templateUrl: "./card.component.html",
+  styleUrl: "./card.component.css",
 })
 export class CardComponent {
   @Input() headerTitle: string;
   @Input() footerText: string;
   @Input() isFavorite: boolean;
+  @Input() imageUrl: string;
 
   @Output() favoriteClick: EventEmitter<void>;
 
   constructor() {
-    this.headerTitle = 'Default Header Title';
-    this.footerText = 'Default Footer Text';
+    this.headerTitle = "Default Header Title";
+    this.footerText = "Default Footer Text";
     this.isFavorite = false;
-
+    this.imageUrl = "";
     this.favoriteClick = new EventEmitter<void>();
   }
 

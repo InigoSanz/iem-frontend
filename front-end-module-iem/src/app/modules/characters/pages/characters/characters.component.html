@@ -5,7 +5,13 @@
       [footerText]="character.status"
       [isFavorite]="favoriteCharacterIds.includes(character.id)"
       (favoriteClick)="onFavoriteClick(character)"
-    ></app-card>
+    >
+      <img
+        [src]="character.image"
+        [alt]="character.name"
+        class="character-image"
+      />
+    </app-card>
   </ng-container>
 </div>
 
