@@ -14,17 +14,14 @@ export class EntityService<
   // Type refering the entity.
   T extends Entity,
   // Type refering the entity's api response.
-  U extends ApiResponse<T>,
+  U extends ApiResponse<T>
 > {
   private _apiUrl: string;
   private _favoriteEntityIds: BehaviorSubject<number[]>;
   private _entities: BehaviorSubject<T[]>;
   private _searchText: BehaviorSubject<string>;
 
-  constructor(
-    private _http: HttpClient,
-    apiUrl: string,
-  ) {
+  constructor(private _http: HttpClient, apiUrl: string) {
     this._apiUrl = apiUrl;
     this._favoriteEntityIds = new BehaviorSubject<number[]>([]);
     this._entities = new BehaviorSubject<T[]>([]);
@@ -54,10 +51,14 @@ export class EntityService<
         const [searchText, entities] = value;
 
         return entities.filter((entity) =>
-          entity.name.toLowerCase().includes(searchText.toLowerCase()),
+          entity.name.toLowerCase().includes(searchText.toLowerCase())
         );
-      }),
+      })
     );
+  }
+
+  getById(id: number): Observable<T> {
+    return this._http.get<T>(`${this._apiUrl}/${id}`);
   }
 
   get favoriteEntities(): Observable<T[]> {
@@ -66,9 +67,9 @@ export class EntityService<
         const [favoriteEntityIds, entities] = value;
 
         return entities.filter((entity) =>
-          favoriteEntityIds.includes(entity.id),
+          favoriteEntityIds.includes(entity.id)
         );
-      }),
+      })
     );
   }
 
@@ -112,7 +113,7 @@ export class EntityService<
     return this._fetchEntitiesPage().pipe(
       map((response: U) => {
         return response.results;
-      }),
+      })
     );
   }
 }
