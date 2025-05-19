@@ -13,6 +13,7 @@ export class CardComponent {
   @Input() imageUrl: string;
 
   @Output() favoriteClick: EventEmitter<void>;
+  @Output() cardClick: EventEmitter<void>;
 
   constructor() {
     this.headerTitle = "Default Header Title";
@@ -20,9 +21,16 @@ export class CardComponent {
     this.isFavorite = false;
     this.imageUrl = "";
     this.favoriteClick = new EventEmitter<void>();
+    this.cardClick = new EventEmitter<void>();
   }
 
-  onFavoriteClick(): void {
+  onFavoriteClick(event: MouseEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
     this.favoriteClick.emit();
+  }
+
+  onCardClick(): void {
+    this.cardClick.emit();
   }
 }

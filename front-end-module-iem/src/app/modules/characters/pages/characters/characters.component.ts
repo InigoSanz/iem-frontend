@@ -4,6 +4,7 @@ import { CardComponent } from "../../../../shared/card/card.component";
 import { Character } from "../../models/character.model";
 import { SearchBarComponent } from "../../../../shared/search-bar/search-bar.component";
 import { CharacterService } from "../../../../core/services/entity/character.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-characters",
@@ -16,7 +17,10 @@ export class CharactersComponent implements OnInit {
   protected favoriteCharacterIds: number[];
   protected favoriteCharacters: Character[];
 
-  constructor(private _characterService: CharacterService) {
+  constructor(
+    private _characterService: CharacterService,
+    private _router: Router
+  ) {
     this.filteredCharacters = [];
     this.favoriteCharacterIds = [];
     this.favoriteCharacters = [];
@@ -64,5 +68,9 @@ export class CharactersComponent implements OnInit {
 
   protected onFavoriteClick(character: Character): void {
     this._characterService.toggleFavorite(character.id);
+  }
+
+  protected onCardClick(character: Character) {
+    this._router.navigate(["/characters", character.id]);
   }
 }
