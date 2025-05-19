@@ -1,6 +1,6 @@
 <div *ngIf="character; else loading">
   <h2>{{ character.name }}</h2>
-  <img [src]="character.image" [alt]="character.name" />
+  <img [src]="character.image" />
   <p><strong>Status:</strong> {{ character.status }}</p>
   <p><strong>Species:</strong> {{ character.species }}</p>
   <p><strong>Gender:</strong> {{ character.gender }}</p>
