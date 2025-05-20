@@ -2,7 +2,6 @@ import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
 import { RouterModule, Router } from "@angular/router";
 import { AuthService } from "../../core/services/auth/auth.service";
-import { Observable } from "rxjs";
 
 @Component({
   selector: "app-header",
@@ -11,10 +10,12 @@ import { Observable } from "rxjs";
   styleUrl: "./header.component.css",
 })
 export class HeaderComponent {
-  isLoggedIn$: Observable<boolean>;
+  protected isLoggedIn = false;
 
   constructor(private _authService: AuthService, private _router: Router) {
-    this.isLoggedIn$ = this._authService.isLoggedIn$;
+    this._authService.isLoggedIn$.subscribe((isLoggedIn: boolean) => {
+      this.isLoggedIn = isLoggedIn;
+    });
   }
 
   logout(): void {

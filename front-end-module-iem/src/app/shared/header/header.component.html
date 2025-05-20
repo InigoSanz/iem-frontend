@@ -14,11 +14,11 @@
       <a class="anchor" [routerLink]="['locations']">Locations</a>
     </li>
 
-    <li class="link">
+    <li class="link" *ngIf="!isLoggedIn">
       <a class="anchor" [routerLink]="['/login']">Login</a>
     </li>
 
-    <li class="link">
+    <li class="link" *ngIf="isLoggedIn">
       <button class="anchor logout-button" (click)="logout()">Logout</button>
     </li>
   </ul>
