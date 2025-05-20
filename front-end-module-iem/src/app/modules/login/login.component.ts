@@ -44,7 +44,7 @@ export class LoginComponent {
       next: (success) => {
         this.loading = false;
         if (success) {
-          this._router.navigate(["/characters"]);
+          this._router.navigate(["/"]);
         }
       },
       error: (err) => {

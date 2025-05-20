@@ -1,4 +1,6 @@
 import { Routes } from "@angular/router";
+import { authGuard } from "./core/guards/auth.guard";
+import { noAuthGuard } from "./core/guards/no-auth.guard";
 
 export const routes: Routes = [
   {
@@ -8,6 +10,7 @@ export const routes: Routes = [
   },
   {
     path: "characters",
+    canActivate: [authGuard],
     loadComponent: () =>
       import("./modules/characters/characters-layout.component").then(
         (m) => m.CharactersLayoutComponent
@@ -38,6 +41,7 @@ export const routes: Routes = [
   },
   {
     path: "episodes",
+    canActivate: [authGuard],
     loadComponent: () =>
       import("./modules/episodes/episodes-layout.component").then(
         (m) => m.EpisodesLayoutComponent
@@ -61,6 +65,7 @@ export const routes: Routes = [
   },
   {
     path: "locations",
+    canActivate: [authGuard],
     loadComponent: () =>
       import("./modules/locations/locations-layout.component").then(
         (m) => m.LocationsLayoutComponent
@@ -84,6 +89,7 @@ export const routes: Routes = [
   },
   {
     path: "login",
+    canActivate: [noAuthGuard],
     loadComponent: () =>
       import("./modules/login/login.component").then((m) => m.LoginComponent),
   },
