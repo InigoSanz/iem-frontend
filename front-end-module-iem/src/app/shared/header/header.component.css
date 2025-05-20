@@ -39,3 +39,11 @@
   color: green;
   transition: all 0.3s ease;
 }
+
+.logout-button {
+  all: unset;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+  font: inherit;
+}

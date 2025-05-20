@@ -32,4 +32,8 @@ export class AuthService {
     }, 2500);
     return result.asObservable();
   }
+
+  logout(): void {
+    this._isLoggedIn$.next(false); // tiene que cambiar el estado
+  }
 }
