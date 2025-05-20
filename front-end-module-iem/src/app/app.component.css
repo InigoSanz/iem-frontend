@@ -3,3 +3,14 @@
   justify-content: center;
   padding: 20px;
 }
+
+.snackbar {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #b6a1a1;
+}

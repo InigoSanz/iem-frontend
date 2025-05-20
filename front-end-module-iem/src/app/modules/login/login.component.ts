@@ -8,6 +8,7 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { AuthService } from "../../core/services/auth/auth.service";
+import { SnackBarService } from "../../core/services/snackbar/snackbar.service";
 
 @Component({
   selector: "app-login",
@@ -24,7 +25,8 @@ export class LoginComponent {
   constructor(
     private _formBuilder: FormBuilder,
     private _authService: AuthService,
-    private _router: Router
+    private _router: Router,
+    private _snackBarService: SnackBarService
   ) {
     this.form = this._formBuilder.group({
       username: ["", Validators.required],
@@ -43,6 +45,7 @@ export class LoginComponent {
     this._authService.login(username, password).subscribe({
       next: (success) => {
         this.loading = false;
+        this._snackBarService.showSnackBar("Login exitoso");
         if (success) {
           this._router.navigate(["/"]);
         }
