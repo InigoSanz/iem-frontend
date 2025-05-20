@@ -9,8 +9,9 @@ export class AuthService {
   private _jwtToken: string | null = null;
 
   constructor() {
-    this._isLoggedIn$ = new BehaviorSubject<boolean>(false);
-    this._jwtToken = null;
+    const jwtToken = localStorage.getItem("jwtToken");
+    this._isLoggedIn$ = new BehaviorSubject<boolean>(jwtToken ? true : false);
+    this._jwtToken = jwtToken ? jwtToken : null;
   }
 
   get isLoggedIn$(): Observable<boolean> {
@@ -30,6 +31,9 @@ export class AuthService {
     setTimeout(() => {
       if (username === "admin" && password === "admin") {
         this._jwtToken = "fake-jwt-token";
+
+        localStorage.setItem("jwtToken", this._jwtToken);
+
         result.next(true);
         this._isLoggedIn$.next(true);
       } else {
@@ -42,5 +46,6 @@ export class AuthService {
 
   logout(): void {
     this._isLoggedIn$.next(false); // tiene que cambiar el estado
+    localStorage.removeItem("jwtToken");
   }
 }
