@@ -16,7 +16,9 @@ export class SnackBarService {
   }
 
   showSnackBar(message: string) {
-    //setTimeout
     this._snackMessage$.next(message);
+    setTimeout(() => {
+      this._snackMessage$.next("");
+    }, 3000);
   }
 }

@@ -6,4 +6,4 @@
 
 <router-outlet></router-outlet>
 
-<div class="snackbar">{{ messageFinal }}</div>
+<div class="snackbar" [ngClass]="{ show: show }">{{ messageFinal }}</div>
